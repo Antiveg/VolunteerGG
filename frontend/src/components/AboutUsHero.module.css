@@ -1,0 +1,24 @@
+.heroContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  background-image: url(../assets/heroBackgroundImage.png);
+  background-size: cover;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  color: white;
+  background-repeat: no-repeat;
+}
+
+.heroContent h1 {
+  font-weight: 500;
+  color: white;
+}
+
+.heroContent p {
+  font-weight: 200;
+  color: white;
+}

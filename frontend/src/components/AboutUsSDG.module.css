@@ -1,0 +1,39 @@
+.sdgContainer{
+    background-image: url(../assets/sdgBackground.png);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sdgContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  width: 60%;
+  gap: 20px;
+}
+
+.sdgLogo:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.sdgContent h1 {
+  font-weight: 500;
+  color: white;
+}
+
+.sdgContent h2 {
+  font-weight: 300;
+  color: white;
+}
+
+.sdgContent p {
+  font-weight: 200;
+  color: white;
+}
