@@ -1,7 +1,7 @@
 import Slider from 'react-slick';
 import styles from './AffiliatesCarousel.module.css';
 import porscheLogo from '../assets/porsche-logo.png';
-
+import backgroundVideo from '../assets/background-video.mp4';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -47,18 +47,24 @@ export default function AffiliatesCarousel() {
 
   return (
     <section className={styles.affiliatesSection}>
-      <h2 className={styles.affiliatesTitle}>OUR AFFILIATE ORGANIZATIONS</h2>
-      <div className={styles.carouselContainer}>
-        <Slider {...settings}>
-          {affiliates.map(affiliate => (
-            <div key={affiliate.id} className={styles.slideItem}>
-              <a href={affiliate.link} target="_blank" rel="noopener noreferrer" className={styles.logoLink}>
-                <img src={affiliate.logo} alt={affiliate.name} className={styles.affiliateLogo} />
-              </a>
-              <p className={styles.logoPlaceholderText}>PLACEHOLDER</p>
-            </div>
-          ))}
-        </Slider>
+      <video autoPlay loop muted className={styles.backgroundVideo}>
+        <source src={backgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className={styles.contentOverlay}>
+        <h2 className={styles.affiliatesTitle}>OUR AFFILIATE ORGANIZATIONS</h2>
+        <div className={styles.carouselContainer}>
+          <Slider {...settings}>
+            {affiliates.map(affiliate => (
+              <div key={affiliate.id} className={styles.slideItem}>
+                <a href={affiliate.link} target="_blank" rel="noopener noreferrer" className={styles.logoLink}>
+                  <img src={affiliate.logo} alt={affiliate.name} className={styles.affiliateLogo} />
+                </a>
+                <p className={styles.logoPlaceholderText}>PLACEHOLDER</p>
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </section>
   );
