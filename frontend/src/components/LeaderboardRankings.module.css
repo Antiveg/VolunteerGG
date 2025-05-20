@@ -1,0 +1,63 @@
+.rankListContainer {
+  width: 100%;
+  max-width: 700px; /* Adjust as needed */
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between list items */
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 10px; /* Rounded corners for each item */
+  transition: background-color 0.2s ease;
+}
+
+.regularItem {
+  background-color: #fff7f0; /* Very light peach for regular items */
+}
+
+.currentUserItem {
+  background-color: #ffe8d6; /* Slightly darker peach for current user */
+}
+
+.rank {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 15px;
+  min-width: 40px; /* Ensure rank numbers align well */
+  text-align: left;
+}
+
+.avatarPlaceholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e0e0e0; /* Light grey placeholder */
+  margin-right: 15px;
+}
+
+.name {
+  flex-grow: 1; /* Allows name to take available space */
+  font-size: 16px;
+  color: #444;
+}
+
+.points {
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+  min-width: 70px; /* Ensure points align well */
+  text-align: right;
+}
+
+.separator {
+  height: 2px;
+  background-color: #d9534f; /* Reddish color from image */
+  margin: 15px 0; /* Space around the separator */
+  border-radius: 1px;
+}
