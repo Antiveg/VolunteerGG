@@ -1,4 +1,5 @@
 import styles from './EventDetailPage.module.css';
+import { useState } from 'react'; // Import useState
 
 const CalendarIcon = () => <span>📅</span>;
 const LocationIcon = () => <span>📍</span>;
@@ -10,6 +11,9 @@ const PlusIcon = () => <span className={styles.plusIcon}>+</span>;
 
 
 const EventDetailPage = () => {
+  // State to track if the user has joined
+  const [isJoined, setIsJoined] = useState(false);
+
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -25,6 +29,11 @@ const EventDetailPage = () => {
     'https://via.placeholder.com/40/FFFF00/000000?Text=Host4',
   ];
 
+  const handleJoinClick = () => {
+    setIsJoined(true);
+    // Here you might also want to add logic to actually register the user,
+    // e.g., make an API call.
+  };
 
   return (
     <div className={styles.eventPageContainer}>
@@ -112,7 +121,18 @@ const EventDetailPage = () => {
             </p>
           </div>
 
-          <button className={`${styles.btn} ${styles.btnJoin}`}>JOIN HERE</button>
+          {isJoined ? (
+            <button className={`${styles.btn} ${styles.btnJoinedConfirmed}`} disabled>
+              Registration confirmed. Please arrive on time.
+            </button>
+          ) : (
+            <button
+              className={`${styles.btn} ${styles.btnJoin}`}
+              onClick={handleJoinClick}
+            >
+              JOIN HERE
+            </button>
+          )}
           <button className={`${styles.btn} ${styles.btnContact}`}>Contact Organization</button>
           <button className={`${styles.btn} ${styles.btnReport}`}>Report This Event</button>
         </div>
