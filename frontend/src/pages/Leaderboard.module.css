@@ -1,0 +1,13 @@
+.leaderboardContainer {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5; /* A light background for the whole page */
+  min-height: 100vh;
+  padding-bottom: 20px;
+}
+
+/* Add a general max-width and centering for the content if needed */
+/* .leaderboardContainer > * {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+} */

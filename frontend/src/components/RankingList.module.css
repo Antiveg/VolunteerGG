@@ -1,0 +1,11 @@
+.rankingListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0px; /* No gap as borders will handle separation */
+  max-width: 700px; /* Or your desired max width */
+  margin: 0 auto; /* Center the list */
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden; /* To make border-radius work with child borders */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}

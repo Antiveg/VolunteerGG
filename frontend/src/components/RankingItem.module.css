@@ -1,0 +1,61 @@
+.rankingItem {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0; /* Light border between items */
+}
+
+.rankingItem:last-child {
+  border-bottom: none;
+}
+
+.rankPosition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px; /* Space between rank and name */
+}
+
+.rankCircle {
+  background-color: #e9ecef; /* Grey circle background */
+  color: #495057; /* Darker text for rank number */
+  border-radius: 50%;
+  width: 40px; /* Circle size */
+  height: 40px; /* Circle size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.userInfo {
+  flex-grow: 1; /* Takes up available space */
+  display: flex;
+  align-items: center;
+}
+
+.userName {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.points {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #555;
+  min-width: 80px; /* Ensure points align nicely */
+  text-align: right;
+}
+
+.currentUser {
+  background-color: #fff0e6; /* Light orange for current user, as in the image */
+  border-top: 1px solid #ffccaa; /* Slightly darker border for current user row */
+  margin-top: 10px; /* Add some separation for the "My Own Ranking" section */
+}
+
+.currentUser .userName {
+  font-weight: bold;
+}
