@@ -1,64 +1,73 @@
 // EventCardSmall.jsx
 import React from 'react';
-import styles from './EventCardSmall.module.css'; // Assuming this path is correct
+import { Link } from 'react-router-dom'; // Import Link
+import styles from './EventCardSmall.module.css';
 
-const EventCardSmall = ({ eventData }) => { // Accept eventData as a prop
+const EventCardSmall = ({ eventData }) => {
   if (!eventData) {
-    // You can return null or a placeholder/loading component
     return <div className={styles.cardPlaceholder}>Loading card...</div>;
   }
 
-  // Destructure from eventData prop, with default values
+  // Ensure eventData has an 'id' property. Your sample data does.
   const {
+    id, // Make sure 'id' is present in your eventData objects
     imageUrl = "https://via.placeholder.com/300x200?text=Event+Image",
     points = "?? Pts",
     tags = [],
     title = "Event Title ...",
-    dateTime = "Date & Time N/A",
+    dateTime = "Date N/A",
     location = "Location N/A",
     friendsJoined = 0,
   } = eventData;
 
+  const eventDetailUrl = `/event/${id}`;
+
   return (
-    <div className={styles.card}>
-      <div className={styles.imageContainer}>
-        <img src={imageUrl} alt={title} className={styles.eventImage} />
-        <div className={styles.pointsBadge}>
-          <span className={styles.pointsIcon}>♦️</span> {/* Or your preferred icon */}
-          {points}
-        </div>
-      </div>
-      <div className={styles.contentArea}>
-        <div className={styles.tagsContainer}>
-          {tags.map((tag, index) => (
-            <span
-              key={index}
-              className={`${styles.tag} ${styles[tag.type] || styles.defaultTag}`} // Added fallback class
-            >
-              {tag.text}
-            </span>
-          ))}
-        </div>
-        <h3 className={styles.title}>{title}</h3>
-        <div className={styles.infoItem}>
-          <div className={`${styles.iconWrapper} ${styles.timeIconWrapper}`}>
-            <span className={styles.icon}>🕒</span>
+    // Wrap the entire card structure with a Link component
+    <Link to={eventDetailUrl} className={styles.cardLinkWrapper}>
+      <div className={styles.card}> {/* Original card div is now a child */}
+        <div className={styles.imageContainer}>
+          <img src={imageUrl} alt={title} className={styles.eventImage} />
+          <div className={styles.pointsBadge}>
+            <span className={styles.pointsIcon}>♦️</span>
+            {points}
           </div>
-          <span>{dateTime}</span>
         </div>
-        <div className={styles.infoItem}>
-          <div className={`${styles.iconWrapper} ${styles.locationIconWrapper}`}>
-            <span className={styles.icon}>📍</span>
+        <div className={styles.contentArea}>
+          <div className={styles.tagsContainer}>
+            {tags.map((tag, index) => (
+              <span
+                key={index}
+                className={`${styles.tag} ${styles[tag.type] || styles.defaultTag}`}
+              >
+                {tag.text}
+              </span>
+            ))}
           </div>
-          <span>{location}</span>
+          <h3 className={styles.title}>{title}</h3>
+          {/* Wrap info items if needed, or they can be direct children */}
+          <div>
+            <div className={styles.infoItem}>
+              <div className={`${styles.iconWrapper} ${styles.timeIconWrapper}`}>
+                <span className={styles.icon}>🕒</span>
+              </div>
+              <span>{dateTime}</span>
+            </div>
+            <div className={styles.infoItem}>
+              <div className={`${styles.iconWrapper} ${styles.locationIconWrapper}`}>
+                <span className={styles.icon}>📍</span>
+              </div>
+              <span>{location}</span>
+            </div>
+          </div>
         </div>
+        {friendsJoined > 0 && (
+          <div className={styles.friendsJoinedBadge}>
+            {friendsJoined} Friend{friendsJoined !== 1 ? 's' : ''} Joined
+          </div>
+        )}
       </div>
-      {friendsJoined > 0 && (
-        <div className={styles.friendsJoinedBadge}>
-          {friendsJoined} Friend{friendsJoined !== 1 ? 's' : ''} Joined
-        </div>
-      )}
-    </div>
+    </Link>
   );
 };
 

@@ -5,18 +5,42 @@
   --event-card-small-image-height: 160px;
 }
 
+.cardLinkWrapper {
+  display: block; /* Important for layout within a grid cell */
+  text-decoration: none; /* Removes underline from the link */
+  color: inherit; /* Ensures text color is inherited, not default link blue */
+  border-radius: var(--event-card-small-border-radius, 12px); /* Optional: if you want link wrapper to have radius for focus */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add hover effect to the wrapper */
+}
+
+.cardLinkWrapper:hover {
+  /* Example hover effect: slightly lift the card */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+.cardLinkWrapper:hover .card {
+  /* If you want to ensure the card's own shadow doesn't conflict,
+     you might not need this if the wrapper shadow is sufficient.
+     The card itself already has a box-shadow. */
+}
+
+
 .card {
   width: var(--event-card-small-width);
   height: var(--event-card-small-height);
+  /* ... other .card styles remain the same (background, border-radius, overflow, display: flex, etc.) ... */
+  /* Crucially, the original .card styles should still apply to make it look like a card */
   background-color: #ffffff;
-  border-radius: 12px;
+  border-radius: var(--event-card-small-border-radius, 12px); /* Make sure this var is defined or use px */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Crucial */
+  overflow: hidden;
   font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: column; /* Image on top, content below */
-  position: relative; /* For friendsJoinedBadge absolute positioning */
+  flex-direction: column;
+  position: relative;
   box-sizing: border-box;
+  /* Since the link wrapper has hover, the card itself doesn't need a separate one unless desired */
 }
 
 .imageContainer {

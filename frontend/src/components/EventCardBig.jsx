@@ -1,30 +1,42 @@
-import styles from './EventCardBig.module.css'; // Re-use the same CSS module
+// EventCardBig.jsx
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate
+import styles from './EventCardBig.module.css';
 
 const EventCardBig = ({ eventData }) => {
+  const navigate = useNavigate(); // Hook for programmatic navigation
+
   if (!eventData) {
-    return null; // Or a loading/placeholder state
+    return null;
   }
 
+  // Ensure eventData has an 'id' property. Your sample data does.
   const {
+    id, // Make sure 'id' is present in your eventData objects
     imageUrl = "https://via.placeholder.com/300x400?text=Event+Image",
     points = "75 Pts",
     multiplier = "3x",
     title = "Lorem Ipsum Dolores ...",
-    tags = [
-      { text: 'Tag Content', type: 'green' },
-      { text: 'Tag Content', type: 'green' },
-      { text: 'Tag Content', type: 'blue' },
-    ],
-    dateTime = "22 Dec 2024, 12:00 - 15:00",
-    location = "Jakarta, Indonesia",
-    company = "Lorem Ipsum Company",
-    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Vestibulum nec justo at felis vestibulum volutpat. Curabitur tincidunt, ligula at hendrerit posuere, metus elit hendrerit elit, eget luctus quam velit at nulla. Proin vel justo et ex pharetra scelerisque. Suspendisse potenti ..."
+    tags = [],
+    dateTime = "Date N/A",
+    location = "Location N/A",
+    company = "Company N/A",
+    description = "No description available."
   } = eventData;
+
+  const eventDetailUrl = `/event/${id}`;
+
+  const handleNavigate = () => {
+    navigate(eventDetailUrl);
+  };
 
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={imageUrl} alt={title} className={styles.eventImage} />
+        {/* Make the image clickable */}
+        <Link to={eventDetailUrl} className={styles.imageLink}>
+          <img src={imageUrl} alt={title} className={styles.eventImage} />
+        </Link>
         {points && (
           <div className={styles.pointsBadge}>
             <span className={styles.pointsIcon}>👁️</span> {points}
@@ -65,8 +77,15 @@ const EventCardBig = ({ eventData }) => {
           {description}
         </p>
         <div className={styles.buttons}>
-          <button className={`${styles.button} ${styles.moreDetailsButton}`}>More Details</button>
-          <button className={`${styles.button} ${styles.joinButton}`}>JOIN HERE</button>
+          {/* Make buttons navigate onClick */}
+          <button className={`${styles.button} ${styles.moreDetailsButton}`} onClick={handleNavigate}>
+            More Details
+          </button>
+          <button className={`${styles.button} ${styles.joinButton}`} onClick={handleNavigate}>
+            {/* Or if "JOIN HERE" should do something else first, then navigate:
+            onClick={() => { console.log("Join logic first"); navigate(eventDetailUrl); }} */}
+            JOIN HERE
+          </button>
         </div>
       </div>
     </div>

@@ -25,6 +25,13 @@
   flex-shrink: 0;
 }
 
+.imageLink {
+  display: block; /* Ensure the link wrapper takes up the image area */
+  width: 100%;
+  height: 100%;
+  text-decoration: none; /* Remove link underline */
+}
+
 .eventImage {
   width: 100%;
   height: 100%;
