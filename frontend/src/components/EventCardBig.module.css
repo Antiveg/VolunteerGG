@@ -1,0 +1,181 @@
+/* EventCardBig.module.css */
+:root {
+  --event-card-big-width: 700px; /* MUST match MAIN_CARD_WIDTH from EventCarousel.jsx */
+  --event-card-big-height: 480px; /* ADJUST THIS FIXED HEIGHT AS NEEDED */
+}
+
+.card {
+  width: var(--event-card-big-width);
+  height: var(--event-card-big-height);
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.imageContainer {
+  width: 40%;
+  height: 100%; /* Take full height of the card */
+  position: relative; /* This is crucial for absolute positioning of badges */
+  flex-shrink: 0;
+}
+
+.eventImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* === Styles for Points Badge (Eye Icon) - Reinstated === */
+.pointsBadge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  z-index: 1; /* Ensure it's above the image */
+}
+
+.pointsIcon { /* Associated with .pointsBadge */
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+/* === Styles for Multiplier Badge (e.g., "3x") - Reinstated === */
+.multiplierBadge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background-color: #ff8c00; /* Orange color */
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Ensure it's above the image */
+}
+
+.content {
+  width: 60%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: calc(1.3em * 2);
+  flex-shrink: 0;
+}
+
+.tags {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.tag {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: white;
+  font-weight: 500;
+}
+.tagGreen { background-color: #77dd77; color: #1a531b; }
+.tagBlue { background-color: #aec6cf; color: #2c3e50; }
+
+.eventInfo {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.infoItem:last-child { margin-bottom: 0; }
+.infoIcon { margin-right: 8px; font-size: 1rem; color: #333; }
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Adjust number of lines */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.description strong { color: #333; }
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.moreDetailsButton {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+}
+.moreDetailsButton:hover { background-color: #e0e0e0; }
+.joinButton {
+  background-color: #ffe0b2;
+  color: #8d5b00;
+  border: 1px solid #ffcc80;
+}
+.joinButton:hover { background-color: #ffd180; }
+
+/* Removed responsive media queries that change card's flex-direction
+   to maintain the fixed layout if that's the primary goal.
+   If responsiveness for these badges is needed (e.g., size reduction on smaller fixed cards),
+   it would be added within specific media queries.
+*/

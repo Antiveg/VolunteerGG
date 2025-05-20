@@ -1,0 +1,145 @@
+/* EventCardSmall.module.css */
+:root {
+  --event-card-small-width: 280px; /* Your desired fixed width */
+  --event-card-small-height: 390px; /* ADJUST THIS FIXED HEIGHT AS NEEDED */
+  --event-card-small-image-height: 160px;
+}
+
+.card {
+  width: var(--event-card-small-width);
+  height: var(--event-card-small-height);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Crucial */
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column; /* Image on top, content below */
+  position: relative; /* For friendsJoinedBadge absolute positioning */
+  box-sizing: border-box;
+}
+
+.imageContainer {
+  width: 100%;
+  height: var(--event-card-small-image-height);
+  position: relative; /* For points badge */
+  flex-shrink: 0; /* Prevent image area from shrinking */
+}
+
+.eventImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pointsBadge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+.pointsIcon { margin-right: 5px; font-size: 0.9em; }
+
+.contentArea {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow contentArea to fill remaining vertical space */
+  overflow: hidden; /* If content within here could overflow */
+  box-sizing: border-box;
+  justify-content: space-between; /* Distribute space, helps with variable content */
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+/* Tag styles (.tag, .pinkishPurple, .cyan, .salmonPink, .defaultTag) remain the same */
+.tag { padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 500; }
+.tag.pinkishPurple { background-color: #f3e5f5; color: #6a1b9a; }
+.tag.cyan { background-color: #e0f7fa; color: #006064; }
+.tag.salmonPink { background-color: #ffebee; color: #c62828; }
+.tag.defaultTag { background-color: #eee; color: #333; }
+
+
+.title {
+  font-size: 1.3rem; /* Slightly smaller to fit */
+  font-weight: bold;
+  color: #212121;
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.3; /* For consistent multi-line clamp height */
+  flex-shrink: 0;
+
+  /* Multi-line truncation for title (e.g., 2 lines) */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: calc(1.3em * 2); /* line-height * number of lines */
+  /* min-height to reserve space, useful if title is sometimes shorter */
+  min-height: calc(1.3em * 1); /* At least one line height */
+}
+
+.infoItemContainer { /* Wrapper for info items if needed for spacing */
+  flex-shrink: 0;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: #555555;
+}
+.infoItem:last-child { margin-bottom: 0; } /* If it's the last actual item before any spacer */
+
+.iconWrapper {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-right: 10px;
+}
+.timeIconWrapper, .locationIconWrapper { background-color: #fff9e0; }
+.icon { font-size: 1rem; }
+.timeIconWrapper .icon { color: #333; }
+
+/* friendsJoinedBadge is absolutely positioned, so it doesn't affect flow for fixed height */
+.friendsJoinedBadge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: #fff9c4;
+  color: #795548;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.cardPlaceholder { /* Style for the loading state in EventCardSmall.jsx */
+  width: var(--event-card-small-width);
+  height: var(--event-card-small-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #ccc;
+  color: #999;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-sizing: border-box;
+}

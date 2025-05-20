@@ -1,0 +1,105 @@
+/* Events.module.css */
+
+/* Define shared width for search bar and results grid area */
+:root { /* Or define on .eventsPageWrapper or .pageContentConstrained for better scoping */
+  --right-column-content-max-width: 100%; /* Default to full width of its container (.mainContentArea) */
+  /* Example: Set to a specific pixel value if you want them narrower than .mainContentArea:
+  --right-column-content-max-width: 800px;
+  */
+  --event-card-small-width: 280px; /* From previous setup for grid items */
+}
+
+.eventsPageWrapper {
+  background-color: #ffffff;
+}
+
+.carouselSectionFullWidth {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.pageContentConstrained {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contentLayoutSection {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.sidebarArea {
+  flex: 0 0 280px;
+}
+
+.mainContentArea {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; /* This will center children if they are narrower than this container */
+  gap: 25px;
+  /* If .searchArea and .resultsGrid have their own margin: auto, align-items: center is not strictly needed here for centering them.
+     However, if they are width: 100% and max-width is applied, their parent needs to center them or they need margin:auto.
+     Let's make them use margin: auto if they are narrower than .mainContentArea. */
+}
+
+.searchArea {
+  width: 100%; /* Takes full width of its slot in .mainContentArea */
+  max-width: var(--right-column-content-max-width); /* Apply the shared max-width */
+  margin-left: auto;  /* Center if max-width is less than 100% of .mainContentArea */
+  margin-right: auto; /* Center if max-width is less than 100% of .mainContentArea */
+  /* The EventSearchbar component inside this will likely be styled to be width: 100%
+     of this .searchArea container. */
+}
+
+.resultsGrid {
+  width: 100%; /* Takes full width of its slot in .mainContentArea */
+  max-width: var(--right-column-content-max-width); /* Apply the SAME shared max-width */
+  margin-left: auto;  /* Center if max-width is less than 100% of .mainContentArea */
+  margin-right: auto; /* Center if max-width is less than 100% of .mainContentArea */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--event-card-small-width));
+  justify-content: space-between;
+  gap: 25px;
+  align-items: start;
+}
+
+/* Responsive adjustments (remain the same) */
+@media (max-width: 1024px) {
+  .contentLayoutSection {
+    flex-direction: column;
+    align-items: center; /* This centers .sidebarArea and .mainContentArea when stacked */
+  }
+  .sidebarArea {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 30px;
+  }
+  .mainContentArea {
+    width: 100%;
+    /* align-items: center; /* Ensures .searchArea and .resultsGrid are centered if they have a max-width */
+  }
+  /* If --right-column-content-max-width is a fixed px value,
+     you might want to make it 100% on smaller screens */
+  /* Example:
+  :root { --right-column-content-max-width: 100%; }
+  */
+}
+
+@media (max-width: 768px) {
+  .pageContentConstrained {
+    padding: 0 15px;
+  }
+  .resultsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Allow some flex for small cards on small screens */
+                                                                   /* Or keep fixed var(--event-card-small-width) */
+    gap: 15px;
+  }
+  .contentLayoutSection, .mainContentArea {
+    gap: 20px;
+  }
+}

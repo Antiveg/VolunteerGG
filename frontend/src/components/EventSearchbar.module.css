@@ -1,0 +1,48 @@
+.searchContainer {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Or a specific max-width e.g., max-width: 600px; */
+  background-color: #e9ecef; /* Light grey background, similar to image */
+  border-radius: 25px; /* Adjust for desired roundness */
+  padding: 0; /* Padding will be on input and button */
+  overflow: hidden; /* Ensures children conform to border-radius */
+  border: 1px solid #ced4da; /* Optional: a very light border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Optional: subtle shadow */
+}
+
+.searchInput {
+  flex-grow: 1; /* Input takes up available space */
+  padding: 10px 15px; /* Adjust padding as needed */
+  border: none; /* Remove default border */
+  outline: none; /* Remove default outline */
+  background-color: transparent; /* Inherit from container or set same as container */
+  font-size: 1rem; /* Adjust font size */
+  color: #495057; /* Text color */
+}
+
+.searchInput::placeholder {
+  color: #6c757d; /* Placeholder text color */
+  opacity: 0.8;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px; /* Adjust padding to match input vertically */
+  border: none; /* Remove default border */
+  background-color: transparent; /* Make button background transparent */
+  cursor: pointer;
+  outline: none;
+  color: #343a40; /* Icon color */
+}
+
+.searchButton:hover {
+  /* Optional: slight background change on hover for the button area if desired */
+  /* background-color: rgba(0, 0, 0, 0.03); */
+}
+
+.searchIcon {
+  font-size: 1.2rem; /* Adjust icon size */
+  display: block; /* Helps with alignment */
+}

@@ -1,0 +1,95 @@
+/* EventCarousel.module.css */
+
+/* Using CSS variables as defined in the previous "peeking" solution */
+:root { /* Or define on .carouselContainer if preferred for scoping */
+  --main-card-width: 700px;
+  --peek-width: 80px;
+  --slide-margin: 20px;
+  --carousel-button-width: 40px;
+  --carousel-button-margin: 15px;
+}
+
+.carouselContainer {
+  width: 100%;              /* Takes full width from its parent (.carouselSectionFullWidth) */
+  /* max-width: none;       /* Removed any fixed max-width for the container itself */
+  /* margin: 30px auto;     /* Margin is now handled by .carouselSectionFullWidth or this can be vertical padding */
+  padding: 30px 0;          /* Vertical padding for the carousel area */
+  position: relative;
+  display: flex;            /* Key for centering children */
+  align-items: center;      /* Key for centering children */
+  justify-content: center;  /* Key for centering children (the viewport + buttons assembly) */
+  box-sizing: border-box;
+}
+
+.carouselViewport {
+  /* Viewport width defines the area where main card + peeks are visible */
+  width: calc(var(--main-card-width) + (2 * var(--peek-width)));
+  /* Example: 700px (card) + 160px (peeks) = 860px */
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  /* border-radius: 8px; /* Optional */
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  /* transform is applied inline via JavaScript */
+}
+
+.carouselSlide {
+  flex: 0 0 var(--main-card-width); /* Each slide is the width of one main card */
+  box-sizing: border-box;
+  margin-right: var(--slide-margin);
+}
+
+.carouselSlide:last-child {
+  margin-right: 0;
+}
+
+/* Navigation Buttons remain styled to flank the viewport */
+.carouselButton {
+  background-color: rgba(230, 230, 230, 0.9);
+  color: #333;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.6rem;
+  z-index: 10;
+  width: var(--carousel-button-width);
+  height: var(--carousel-button-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  /* These buttons are direct children of .carouselContainer and will be centered by its flex properties */
+}
+
+.carouselButton:hover {
+  background-color: rgba(220, 220, 220, 1);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.carouselButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prevButton {
+  /* Space between left button and viewport */
+  margin-right: var(--carousel-button-margin);
+  /* order: -1; /* Not strictly needed if markup order is button, viewport, button, but good for explicit control */
+}
+
+.nextButton {
+  /* Space between viewport and right button */
+  margin-left: var(--carousel-button-margin);
+}
+
+.emptyCarousel {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  width: 100%; /* Take up space within the carousel section */
+}
